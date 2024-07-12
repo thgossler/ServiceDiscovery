@@ -38,6 +38,7 @@
 
 An simple example .NET implementation of a distributed service discovery mechanism similar to Apple Bonjour. 
 Should conform to DNS Service Discovery (DNS-SD RFC 6763) over Multicast DNS (mDNS RFC 6762).
+Created with heltp of GitHub Copilot and ChatGPT.
 
 
 ## Contributing
