@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "DiscoveryClient": {
+      "commandName": "Project",
+      "commandLineArgs": "3"
+    }
+  }
+}
