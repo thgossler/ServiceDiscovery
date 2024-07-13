@@ -12,10 +12,6 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/thgossler/ServiceDiscovery">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
-
   <h1 align="center">ServiceDiscovery</h1>
 
   <p align="center">
