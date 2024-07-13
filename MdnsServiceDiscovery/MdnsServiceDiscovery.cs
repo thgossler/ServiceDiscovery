@@ -15,6 +15,7 @@ using System.Timers;
 /// <summary>
 /// Implements DNS-SD (DNS Service Discovery - RFC 6763) over Multicast DNS (mDNS - RFC 6762),
 /// allowing services to announce themselves and discover other services in the same local network.
+/// This simple implementation is not encrypting or using secure communication for the mDNS messages.
 /// </summary>
 public class MdnsServiceDiscovery : IDisposable
 {

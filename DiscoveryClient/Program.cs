@@ -6,14 +6,13 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace ServiceDiscovery;
 
-// TODO: Support HTTPS with hostname and issuer validation 
-
 class Program
 {
     private static readonly HttpClient HttpClient = new HttpClient();
     private static readonly Dictionary<string, ServiceInfo> DiscoveredServices = new Dictionary<string, ServiceInfo>();
     private static readonly BehaviorSubject<bool> AllServicesDiscovered = new BehaviorSubject<bool>(false);
     private static readonly MdnsServiceDiscovery MdnsService = new MdnsServiceDiscovery();
+    internal static bool UseHttps = false;  // Set to true to use Https (certificate.pfx must be created with CreateHttpsCertificate.ps1)
 
     static async Task Main(string[] args)
     {
@@ -74,6 +73,24 @@ class Program
         builder.Services.AddControllers();
         builder.WebHost.UseUrls($"http://*:{port}");
 
+        if (UseHttps) {
+            if (!File.Exists("certificate.pfx")) {
+                Console.WriteLine("The certificate.pfx file was not found, secure communication with Https is not possible.");
+                Console.WriteLine("Exiting...");
+                return;
+            }
+            builder.WebHost.UseKestrel(serverOptions => {
+                serverOptions.ListenAnyIP(port, listenOptions => {
+                    var certificateBytes = File.ReadAllBytes("certificate.pfx");
+                    var serverCertificate = new System.Security.Cryptography.X509Certificates.X509Certificate2(
+                        certificateBytes, 
+                        "12345678", 
+                        System.Security.Cryptography.X509Certificates.X509KeyStorageFlags.UserKeySet);
+                    listenOptions.UseHttps(serverCertificate);
+                });
+            });
+        }
+
         var app = builder.Build();
 
         app.MapGet($"/{serviceName}", () => role switch {
@@ -107,11 +124,23 @@ class Program
 
     private static async Task<string> CallServiceApi(string role)
     {
+        var protocol = UseHttps ? "https" : "http";
         if (DiscoveredServices.TryGetValue(role, out ServiceInfo? serviceInfo)) {
-            var url = $"http://{serviceInfo.Host}:{serviceInfo.Port}/{serviceInfo.ServiceName}/";
+            var url = $"{protocol}://{serviceInfo.Host}:{serviceInfo.Port}/{serviceInfo.ServiceName}/";
 
             try {
-                var response = await HttpClient.GetAsync(url);
+                HttpClient httpClient;
+                if (UseHttps) {
+                    // Skip certificate validation for simplicity (this is not recommended for production scenarios)
+                    var clientHandler = new HttpClientHandler();
+                    clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => true;
+                    httpClient = new HttpClient(clientHandler);
+                }
+                else {
+                    httpClient = new HttpClient();
+                }
+
+                var response = await httpClient.GetAsync(url);
                 response.EnsureSuccessStatusCode();
                 return await response.Content.ReadAsStringAsync();
             }
