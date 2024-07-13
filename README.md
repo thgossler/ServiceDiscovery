@@ -88,7 +88,7 @@ or via [GitHub Sponsors](https://github.com/sponsors/thgossler).
 
 ## License
 
-Distributed under the MIT License. See [`LICENSE`](https://github.com/thgossler/ServiceDiscovery/blob/master/LICENSE.txt) for more information.
+Distributed under the MIT License. See [`LICENSE`](https://github.com/thgossler/ServiceDiscovery/blob/master/LICENSE) for more information.
 
 
 <!-- MARKDOWN LINKS & IMAGES (https://www.markdownguide.org/basic-syntax/#reference-style-links) -->
@@ -101,4 +101,4 @@ Distributed under the MIT License. See [`LICENSE`](https://github.com/thgossler/
 [issues-shield]: https://img.shields.io/github/issues/thgossler/ServiceDiscovery.svg
 [issues-url]: https://github.com/thgossler/ServiceDiscovery/issues
 [license-shield]: https://img.shields.io/github/license/thgossler/ServiceDiscovery.svg
-[license-url]: https://github.com/thgossler/ServiceDiscovery/blob/master/LICENSE.txt
+[license-url]: https://github.com/thgossler/ServiceDiscovery/blob/master/LICENSE
