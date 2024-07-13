@@ -19,16 +19,16 @@
   <h1 align="center">ServiceDiscovery</h1>
 
   <p align="center">
-    An simple example .NET implementation of a distributed service discovery mechanism similar to Apple Bonjour.
+    A simple example .NET implementation of a distributed service discovery mechanism similar to Apple Bonjour.
     <br />
     <a href="https://github.com/thgossler/ServiceDiscovery/issues">Report Bug</a>
-    ·
+    Â·
     <a href="https://github.com/thgossler/ServiceDiscovery/issues">Request Feature</a>
-    ·
+    Â·
     <a href="https://github.com/thgossler/ServiceDiscovery#contributing">Contribute</a>
-    ·
+    Â·
     <a href="https://github.com/sponsors/thgossler">Sponsor project</a>
-    ·
+    Â·
     <a href="https://www.paypal.com/donate/?hosted_button_id=JVG7PFJ8DMW7J">Sponsor via PayPal</a>
   </p>
 </div>
