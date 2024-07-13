@@ -41,6 +41,28 @@ in this simple implementation.
 Created with help of GitHub Copilot and ChatGPT.
 
 
+## Usage
+
+Just build the project and execute the `DiscoveryClient.exe` executable 3 times somewhere in the same network like
+
+Computer 1: `DiscoveryClient.exe 1`
+
+Computer 2: `DiscoveryClient.exe 2`
+
+Computer 3: `DiscoveryClient.exe 3`
+
+The 3 different instances of the executable can also be started on the same computer.
+
+They are all just starting and waiting until the 2 others have also started and been discovered, and then
+they call each other in the mesh and combine their results into the output string "Hello world!" 
+(instance 1 => "Hello", instance 2 => "world", instance 3 => "!"). All clients exit once they have achieved
+their goal.
+
+The MdnsServiceDiscovery library can handle any number of clients. Just this `DiscoveryClient` example
+implementation of a client is using exactly 3 service instances to demonstate the dynamic discovery and
+collaboration based on roles.
+
+
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
