@@ -43,7 +43,7 @@ Created with help of GitHub Copilot and ChatGPT.
 
 ## Usage
 
-Just build the project and execute the DiscoveryClient executable 3 times somewhere in the same network like
+Just build the project and execute the DiscoveryClient executable 3 times somewhere in the same network, like:
 
 Computer 1: `DiscoveryClient.exe 1`
 
