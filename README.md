@@ -43,7 +43,7 @@ Created with help of GitHub Copilot and ChatGPT.
 
 ## Usage
 
-Just build the project and execute the `DiscoveryClient.exe` executable 3 times somewhere in the same network like
+Just build the project and execute the DiscoveryClient executable 3 times somewhere in the same network like
 
 Computer 1: `DiscoveryClient.exe 1`
 
@@ -58,8 +58,8 @@ they call each other in the mesh and combine their results into the output strin
 (instance 1 => "Hello", instance 2 => "world", instance 3 => "!"). All clients exit once they have achieved
 their goal.
 
-The MdnsServiceDiscovery library can handle any number of clients. Just this `DiscoveryClient` example
-implementation of a client is using exactly 3 service instances to demonstate the dynamic discovery and
+The `MdnsServiceDiscovery` library can handle any number of clients. Just this `DiscoveryClient` console 
+example app is using exactly 3 service instances to demonstate the dynamic discovery and
 collaboration based on roles.
 
 
